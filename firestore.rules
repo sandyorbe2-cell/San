@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Anyone can read and write published dramas so real-time updates sync across devices
+    match /dramas/{dramaId} {
+      allow read, write: if true;
+    }
+
+    // Global settings including monetization and smartlinks
+    match /settings/{settingId} {
+      allow read, write: if true;
+    }
+
+    // Connection testing
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+  }
+}

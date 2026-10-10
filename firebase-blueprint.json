@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "drama": {
+      "title": "Drama",
+      "description": "A vertical mini-drama series with episodes",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "originalTitle": { "type": "string" },
+        "synopsis": { "type": "string" },
+        "poster": { "type": "string" },
+        "banner": { "type": "string" },
+        "genre": { "type": "string" },
+        "tags": { "type": "array" },
+        "episodesCount": { "type": "number" },
+        "rating": { "type": "number" },
+        "likesCount": { "type": "number" },
+        "viewsCount": { "type": "number" },
+        "isCustom": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "episodes": { "type": "array" }
+      },
+      "required": ["title", "genre", "poster"]
+    },
+    "monetizationSettings": {
+      "title": "MonetizationSettings",
+      "description": "Global adsterra smartlink and monetization configurations",
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "adsterraSmartlinkUrl": { "type": "string" },
+        "secondarySmartlinkUrl": { "type": "string" },
+        "freeEpisodesCount": { "type": "number" },
+        "rewardCountdownSeconds": { "type": "number" },
+        "coinsPerAd": { "type": "number" },
+        "coinsToUnlockEpisode": { "type": "number" },
+        "clicksCount": { "type": "number" },
+        "unlockedEpisodesCount": { "type": "number" },
+        "globalSmartlinkEnabled": { "type": "boolean" },
+        "globalFrequency": { "type": "string" },
+        "bannerAdEnabled": { "type": "boolean" }
+      },
+      "required": ["adsterraSmartlinkUrl"]
+    }
+  },
+  "firestore": {
+    "/dramas/{dramaId}": {
+      "schema": "drama",
+      "description": "Published mini-dramas and series for all viewers"
+    },
+    "/settings/{settingId}": {
+      "schema": "monetizationSettings",
+      "description": "Global application monetization and links settings"
+    }
+  }
+}
